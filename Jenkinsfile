@@ -4,7 +4,9 @@ pipeline {
 		label 'nodejs'	
 	} 
      }
-   stages {
+   stages { 
+    stage ('Run Tests') {
+    parallel {
    stage('Backend Tests'){
 	steps{
 	 echo 'backend'
@@ -16,5 +18,7 @@ pipeline {
 	 sh 'node ./frontend/test.js'	
 	}
     }
+   }
+  }
  }
 }
